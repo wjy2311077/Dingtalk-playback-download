@@ -20,9 +20,19 @@ else: #在其他操作系统上的默认处理方式
 
 os.system(clstext)
 
+__LINK_OPTIONS__={
+    '1': 'https://dtliving-sz.dingtalk.com/live_hp/',
+    '2': 'https://dtliving-sh.dingtalk.com/live_hp/',
+    '3': 'https://dtliving-bj.dingtalk.com/live_hp/',
+}
+
 print("使用前请准备ffmpeg环境")
 print("---------------------------")
-print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live_hp/\n4.自定义\n---------------\n以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
+print("下载通道:")
+for key, value in __LINK_OPTIONS__.items():
+    print(f"{key}.{value}")
+print("---------------")
+print("以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
 print("---------------------------")
 geturl=input("下载域名(1-4):")
 if geturl=='1':
@@ -39,6 +49,12 @@ else:
             else:
                 print('选择无效')
                 sys.exit()
+
+geturl = input("下载域名（如需自定义，直接输入链接）: ")
+if geturl in __LINK_OPTIONS__:
+    dowurl=__LINK_OPTIONS__[geturl]
+else:
+    dowurl=geturl
 
 os.system(clstext)
 
