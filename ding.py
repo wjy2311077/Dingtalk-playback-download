@@ -12,12 +12,11 @@ systype = platform.system()
 
 if systype == 'Windows':
     clstext='cls'
-if systype == 'Linux':
+if systype == 'Linux' or systype == 'Darwin':
     clstext='clear'
-
-
-
-
+else: #在其他操作系统上的默认处理方式
+    print('未知的系统类型:' + systype)
+    clstext='unknown_command'
 
 os.system(clstext)
 
