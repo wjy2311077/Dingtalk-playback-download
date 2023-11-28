@@ -62,20 +62,17 @@ os.system(clstext)
 with open('m3u8.txt', 'w') as f: #新建用于存放m3u8内容的txt文件
     f.write('')
 
-print('-------m3u8文件已创建-------')
-print('')
-print('已在脚本运行目录新建了 m3u8.txt 文件，请您将m3u8内容粘贴在此文件中')
-print('')
+#打开m3u8文件
+if systype == 'Windows':
+    os.system('notepad.exe {}'.format('m3u8.txt'))
+elif systype == 'Linux':
+    os.system('vim {}'.format('m3u8.txt'))
+elif systype == 'Darwin':
+    os.system('open -a TextEdit {}'.format('m3u8.txt'))
 
-writetype=input('如已操作完毕，请输入 y : ')
-
-if writetype=='y':
-    with open('m3u8.txt','r') as f: #读取m3u8内容
-        text=f.read()
-else:
-    print('选择无效')
-    sys.exit()
-
+input('按回车键继续...')
+with open('m3u8.txt','r') as f: #读取m3u8内容
+    text=f.read()
 
 os.system(clstext)
 
